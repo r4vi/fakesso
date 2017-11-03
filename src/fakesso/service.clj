@@ -49,7 +49,8 @@
 (defn token [request]
   (ring-resp/response {:access_token (rand-str 20)
                        :scope (get-in request [:params :scope] "read write")
-                       :exp (+ (rand-int 99999))
+                       :token_type "Bearer"
+                       :expires_in (+ (rand-int 99999))
                        })
   )
 

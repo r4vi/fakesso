@@ -16,15 +16,21 @@ same `state` you provided and an additional query-param called `code`.
 Http POST to `/o/token/` with the code you were given (or any code, it doesn't
 care) and it'll return you an access token in the form of json:
 
+If you want it to return any custom scopes then just add `scope=whatever` to your POST body.
+
 ```json
-  {
-    "access_code": "12452"
-  }
+{
+    "access_token": "RFHEYFGWTPGNRCAAMYAD",
+    "expires_in": 57861,
+    "scope": "read write",
+    "token_type": "Bearer"
+}
+
 ```
 
 ### /o/introspect/
 If you're using an app that is validation oauth2 access tokens using RFC 7662,
-then point that app to use the provided introspect endpoint. 
+then point that app to use the provided introspect endpoint.
 It will respond saying that any `access_token` is active and expires in the
 future.
 
@@ -32,8 +38,8 @@ If you want it to return any custom scopes then just add `scope=whatever` to you
 
 ```json
 {
-    "active": true, 
-    "exp": 96348, 
+    "active": true,
+    "exp": 96348,
     "scope": "read write"
 }
 
@@ -44,10 +50,10 @@ If you want it to return any custom scopes then just add `scope=whatever` to you
 1. Download a release: [releases]
 1. make sure you have java 8
 1. decide what port you want it running on and export the PORT environment variable: `export PORT=12345`
-1. Run `java -jar fakesso-0.0.1-SNAPSHOT-standalone.jar`
+1. Run `java -jar fakesso-0.0.2-SNAPSHOT-standalone.jar`
 
 
-## Developer Getting Started 
+## Developer Getting Started
 
 1. Start the application: `lein run`
 2. Go to [localhost:8080](http://localhost:8080/) to see: `Hello World!`
