@@ -14,9 +14,12 @@ same `state` you provided and an additional query-param called `code`.
 ### /o/token/
 
 Http POST to `/o/token/` with the code you were given (or any code, it doesn't
-care) and it'll return you an access token in the form of json:
-
+care).
 If you want it to return any custom scopes then just add `scope=whatever` to your POST body.
+
+It'll return you an access token in the form:
+
+
 
 ```json
 {
@@ -29,7 +32,7 @@ If you want it to return any custom scopes then just add `scope=whatever` to you
 ```
 
 ### /o/introspect/
-If you're using an app that is validation oauth2 access tokens using RFC 7662,
+If you're using an app that is validating oauth2 access tokens using RFC 7662,
 then point that app to use the provided introspect endpoint.
 It will respond saying that any `access_token` is active and expires in the
 future.
@@ -48,15 +51,15 @@ If you want it to return any custom scopes then just add `scope=whatever` to you
 
 ## User Getting Started
 1. Download a release: [releases]
-1. make sure you have java 8
-1. decide what port you want it running on and export the PORT environment variable: `export PORT=12345`
+1. make sure you have java 8.
+1. decide what port you want it running on and export the PORT environment variable: `export PORT=12345`, if you don't specify a port it runs on 8080 by default.
 1. Run `java -jar fakesso-0.0.2-SNAPSHOT-standalone.jar`
 
 
 ## Developer Getting Started
 
 1. Start the application: `lein run`
-2. Go to [localhost:8080](http://localhost:8080/) to see: `Hello World!`
+2. Go to [localhost:8080](http://localhost:8080/).
 3. Read your app's source code at src/fakesso/service.clj. Explore the docs of functions
    that define routes and responses.
 4. Run your app's tests with `lein test`. Read the tests at test/fakesso/service_test.clj.
@@ -93,4 +96,5 @@ Once the image it built, it's cached.  To delete the image and build a new one:
 
 ## Links
 * [Other examples](https://github.com/pedestal/samples)
-* [releases]: https://github.com/r4vi/fakesso/releases/
+
+[releases]: https://github.com/r4vi/fakesso/releases/
