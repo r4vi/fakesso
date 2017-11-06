@@ -54,6 +54,13 @@
                        })
   )
 
+(defn whoami [request]
+  (ring-resp/response {:email "test@test.test"
+                       :first_name "test"
+                       :last_name "test"
+                       :groups []
+                       }))
+
 (def html-interceptors [http/html-body])
 (def json-interceptors [http/json-body])
 
@@ -65,6 +72,7 @@
               ["/o/introspect/" :get (conj json-interceptors `introspect) :route-name :introspect]
               ["/o/token/" :post (conj json-interceptors `token) :route-name :token-post]
               ["/o/token/" :get (conj json-interceptors `token) :route-name :token]
+              ["/api/v1/user/me/" :get (conj json-interceptors `whoami) :route-name :whoami]
               })
 
 ;; Consumed by fakesso.server/create-server

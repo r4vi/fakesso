@@ -51,9 +51,9 @@ If you want it to return any custom scopes then just add `scope=whatever` to you
 
 ## User Getting Started
 1. Download a release: [releases]
-1. make sure you have java 8.
-1. decide what port you want it running on and export the PORT environment variable: `export PORT=12345`, if you don't specify a port it runs on 8080 by default.
-1. Run `java -jar fakesso-0.0.2-SNAPSHOT-standalone.jar`
+1. make sure you have java 8
+1. decide what port you want it running on and export the PORT environment variable: `export PORT=12345`
+1. Run `java -jar fakesso-0.0.3-standalone.jar`
 
 
 ## Developer Getting Started

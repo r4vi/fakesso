@@ -1,6 +1,6 @@
-(defproject fakesso "0.0.2-SNAPSHOT"
+(defproject fakesso "0.0.3"
   :description "a really insecure oauth2 provider"
-  :url "http://example.com/FIXME"
+  :url "https://github.com/r4vi/fakesso"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.8.0"]
