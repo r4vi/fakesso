@@ -23,7 +23,6 @@
 (defn rand-str [len]
   (apply str (take len (repeatedly #(char (+ (rand 26) 65))))))
 
-
 ;; views
 (defn home-page
   [request]
@@ -35,31 +34,26 @@
                          (:redirect_uri p "/")
                          {:state (:state p "state")
                           :code (rand-str 10)}))
-    (ring-resp/response "" 403)
-    ))
+    (ring-resp/response "" 403)))
 
 (defn introspect [request]
   (if (get-in request [:params :token])
     (ring-resp/response {:active true
                          :scope (get-in request [:params :scope] "read write")
                          :exp (+ (rand-int 99999))})
-    (ring-resp/response {:active false})
-    ))
+    (ring-resp/response {:active false})))
 
 (defn token [request]
   (ring-resp/response {:access_token (rand-str 20)
                        :scope (get-in request [:params :scope] "read write")
                        :token_type "Bearer"
-                       :expires_in (+ (rand-int 99999))
-                       })
-  )
+                       :expires_in (+ (rand-int 99999))}))
 
 (defn whoami [request]
   (ring-resp/response {:email "test@test.test"
                        :first_name "test"
                        :last_name "test"
-                       :groups []
-                       }))
+                       :groups []}))
 
 (def html-interceptors [http/html-body])
 (def json-interceptors [http/json-body])
@@ -72,8 +66,7 @@
               ["/o/introspect/" :get (conj json-interceptors `introspect) :route-name :introspect]
               ["/o/token/" :post (conj json-interceptors `token) :route-name :token-post]
               ["/o/token/" :get (conj json-interceptors `token) :route-name :token]
-              ["/api/v1/user/me/" :get (conj json-interceptors `whoami) :route-name :whoami]
-              })
+              ["/api/v1/user/me/" :get (conj json-interceptors `whoami) :route-name :whoami]})
 
 ;; Consumed by fakesso.server/create-server
 ;; See http/default-interceptors for additional options you can configure
